@@ -5,6 +5,7 @@ const todoList = document.querySelector(".todo-list");
 const filter = document.querySelector(".filter-todo");
 
 //Event Listeners
+document.addEventListener("DOMContentLoaded", getTodos());
 todoButton.addEventListener(
   "click", //Functions
   function addTodo(event) {
@@ -49,6 +50,7 @@ todoList.addEventListener("click", function deleteCheck(e) {
     const todo = item.parentElement;
     //ANIMATION
     todo.classList.add("fall");
+    removeLocalTodos(todo);
     todo.addEventListener("transitionend", function () {
       todo.remove();
     });
@@ -93,6 +95,8 @@ function saveLocalTodos(todo) {
   //CHECK----HEY Do I already have things in local storage?
   let todos;
   if (localStorage.getItem("todos") === null) {
+    //Keys i.e todo here are stored
+    //in strings in local storage
     todos = [];
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
@@ -102,7 +106,6 @@ function saveLocalTodos(todo) {
 }
 
 function getTodos() {
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!UNDERSTAND!!!!!!!!!!!!!!!!!!!!!!
   //CHECK----HEY Do I already have things in local storage?
   let todos;
   if (localStorage.getItem("todos") === null) {
@@ -119,11 +122,8 @@ function getTodos() {
     //Create LI
     const newTodo = document.createElement("li");
     newTodo.classList.add("todo-list");
-    newTodo.innerText = todoInput.value;
+    newTodo.innerText = todo;
     todoDiv.appendChild(newTodo);
-    //ADD TODO TO LOCAL STORAGE
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    saveLocalTodos(todoInput.value);
 
     //CHECK MARK BUTTON
     const completedButton = document.createElement("button");
@@ -140,4 +140,17 @@ function getTodos() {
     //APPEND TODO LIST
     todoList.appendChild(todoDiv);
   });
+}
+
+function removeLocalTodos(todo) {
+  //CHECK----HEY Do I already have things in local storage?
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
