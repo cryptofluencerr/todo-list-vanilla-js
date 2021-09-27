@@ -43,6 +43,7 @@ todoList.addEventListener("click", function deleteCheck(e) {
   //DELETE TODO
   if (item.classList[0] === "trash-btn") {
     const todo = item.parentElement;
+    //ANIMATION
     todo.classList.add("fall");
     todo.addEventListener("transitionend", function () {
       todo.remove();
@@ -50,7 +51,7 @@ todoList.addEventListener("click", function deleteCheck(e) {
   }
   //CHECK MARK
   if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement; //also understand what event does in JS
-    todo.classList.toggle("completed"); //understand what this code is doing
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
   }
 });

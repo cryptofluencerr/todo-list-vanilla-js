@@ -63,7 +63,7 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
   padding-left: 0.5rem;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .todo li {
@@ -95,7 +95,7 @@ form button:hover {
 }
 
 .fall {
-  transform: translateY(8rem) rotateZ(20deg);
+  transform: translateZ(8rem) rotateZ(20deg);
   opacity: 0;
 }
 
