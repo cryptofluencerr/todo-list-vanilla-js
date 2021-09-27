@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 header,
@@ -118,14 +118,17 @@ select {
   color: #ff6f47;
   width: 10rem;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.9rem;
+  margin-left: 1.5rem;
 }
+
 .select::after {
-  content: "\25BC";
+  content: "\25bc";
   position: absolute;
   background: #ff6f47;
   top: 0;
-  padding: 1rem;
+  right: 0;
+  padding: 0.9rem;
   pointer-events: none;
   transition: all 0.3s ease;
   cursor: pointer;
